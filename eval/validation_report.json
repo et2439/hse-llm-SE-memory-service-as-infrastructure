@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-27",
+  "scope": "KT1_KT2_local_PR_ready",
+  "publication_status": "local_pr_ready_not_published",
+  "unit_tests": {
+    "command": "python3 -B -m unittest discover -s tests -v",
+    "count": 29,
+    "exit_code": 0,
+    "status": "passed"
+  },
+  "dataset_validation": {
+    "status": "structurally_valid_not_a_service_evaluation",
+    "visible": 120,
+    "private_holdout": 80,
+    "development": 20,
+    "kt1": 20,
+    "annotation_tasks": 40,
+    "api_contract_fixtures": 12,
+    "holdout_check": "not_opened",
+    "freeze_status": "frozen"
+  },
+  "ground_truth": {
+    "method": "synthetic_by_construction"
+  },
+  "freeze": {
+    "status": "frozen",
+    "version": "1.0.3",
+    "certificate": "eval/release.json",
+    "labels_rewritten": false,
+    "heldout_contents_parsed": false,
+    "external_delivery_confirmed": false
+  },
+  "budget_check": {
+    "exit_code": 0,
+    "base": {
+      "status": "estimates_not_measurements",
+      "monthly_operations": 300000,
+      "writes": 90000,
+      "reads": 207000,
+      "forgets": 3000,
+      "write_extraction_usd": 38.7,
+      "forget_resolution_usd": 0.42,
+      "embeddings_usd": 0.9612,
+      "memory_api_usd": 40.0812,
+      "memory_service_with_reserve_usd": 104.11,
+      "memory_service_usd_per_1000_operations": 0.347,
+      "answering_agent_usd_before_reserve": 71.9946,
+      "baseline_total_with_agent_usd": 106.59,
+      "memory_total_with_agent_usd": 197.7,
+      "memory_service_within_cap": true
+    }
+  },
+  "scope_check": {
+    "deferred_KT3_files_excluded": true,
+    "service_implemented": false,
+    "model_comparison_run": false,
+    "source_contents_preserved": true
+  },
+  "format_check": {
+    "command": "git diff --check",
+    "exit_code": 0
+  },
+  "service_evaluation_model_calls": 0,
+  "github_writes": 0,
+  "reference_check": {
+    "questions": 40,
+    "artem_responsibility": 20,
+    "vladislav_responsibility": 20,
+    "status": "complete",
+    "source_adjustments": 1,
+    "review_helper_bug_fixed": true
+  },
+  "checkpoint_responsibility": {
+    "KT1": [
+      "Жбанов Артём Игоревич",
+      "Савченко Владислав Евгеньевич"
+    ],
+    "KT2": [
+      "Жбанов Артём Игоревич",
+      "Савченко Владислав Евгеньевич"
+    ],
+    "assigned_share_per_person": 0.5
+  },
+  "editorial_revision_checks": {
+    "public_event_texts_questions_expected_answers_preserved": true,
+    "reference_check_answers_preserved": 40,
+    "protected_file_hashes_preserved": 5,
+    "heldout_contents_parsed": false
+  }
+}

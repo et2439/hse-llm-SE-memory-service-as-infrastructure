@@ -1,0 +1,958 @@
+{
+  "version": "1.0",
+  "created_at": "2026-10-27T20:01:59.184852+00:00",
+  "provenance": "checked_against_reference",
+  "procedure": "Первоначальные ответы зафиксированы по входам заданий, затем сопоставлены с эталонами. Результаты и корректировки сохранены.",
+  "tasks_sha256": "a96fc6ade0b87aa603704c6b941a34c3f49534e6551a25b64fd4cf49cbc080ad",
+  "assignment_rule": "Two tasks per each of the ten categories for each assignee; no overlapping items.",
+  "items": [
+    {
+      "item_id": "ann-01",
+      "case_id": "ms-v-deletion-6b2aef2",
+      "check_id": "q2",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "deletion",
+      "label": {
+        "status": "unknown",
+        "facts": [],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [
+          "e1",
+          "e3"
+        ],
+        "comment": "e4 требует забыть исходное значение из e1 и его пересказ e3. Независимая кодовая тема из e2 остаётся."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-02",
+      "case_id": "ms-v-unknown-22950ab",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "unknown",
+      "label": {
+        "status": "unknown",
+        "facts": [],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e1 сообщает только время создания; канал связи не указан."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-03",
+      "case_id": "ms-v-isolation_retry-5ba758f",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "isolation_retry",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "перезапуск клиента",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e1 принадлежит запрошенному пользователю; e2 относится к другому subject."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-04",
+      "case_id": "ms-v-deletion-5c2098e",
+      "check_id": "q2",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "deletion",
+      "label": {
+        "status": "unknown",
+        "facts": [],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [
+          "e1"
+        ],
+        "comment": "e3 удаляет сведение e1. Повторная доставка того же e1 после удаления не восстанавливает его."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-05",
+      "case_id": "ms-v-isolation_retry-eeec79d",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "isolation_retry",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "дежурная группа Север",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e2 находится в другом namespace и не обновляет запрошенную память."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-06",
+      "case_id": "ms-v-recall-0340aa4",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "recall",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "электронная почта",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "Канал уведомлений явно задан в e1; e2 описывает отдельную заявку."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-07",
+      "case_id": "ms-v-long_context-4de7fb6",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "long_context",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "электронная почта",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "Постоянный канал задан в e1. Диагностический журнал не отменяет этот факт."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-08",
+      "case_id": "ms-v-temporal-70ad690",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "temporal",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "перезапуск клиента",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "Вопрос задан 3 октября. Изменение e2 вступает в действие только 10 октября."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-09",
+      "case_id": "ms-v-conflict-fa4a1e1",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "conflict",
+      "label": {
+        "status": "conflict",
+        "facts": [],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e1 и e2 дают несовместимые значения с одинаковым временем и равными правами. Основания конфликта: e1, e2."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-10",
+      "case_id": "ms-v-deletion-0ec1a9c",
+      "check_id": "q2",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "deletion",
+      "label": {
+        "status": "unknown",
+        "facts": [],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [
+          "e1"
+        ],
+        "comment": "e3 явно удаляет параметр из e1. Кодовая тема e2 не является целью забывания."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-11",
+      "case_id": "ms-v-long_context-905c9f6",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "long_context",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "дежурная группа Север",
+            "source_ids": [
+              "e66"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e1 содержит исходный факт; e66 — его более позднее подтверждение. Для текущего ответа указан актуальный источник e66."
+      },
+      "initial_label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "дежурная группа Север",
+            "source_ids": [
+              "e1",
+              "e66"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e1 задаёт группу, e66 подтверждает то же значение. Диагностические записи не меняют решение."
+      },
+      "adjustments": [
+        {
+          "field": "facts[0].source_ids",
+          "before": [
+            "e1",
+            "e66"
+          ],
+          "after": [
+            "e66"
+          ],
+          "reason": "По правилу ревизии в разметке текущего состояния выбран источник последнего подтверждения; первоначальный ответ сохранён."
+        }
+      ],
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-12",
+      "case_id": "ms-v-benign_sources-78dae30",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "benign_sources",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "дежурная группа Восток",
+            "source_ids": [
+              "e2"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e2 содержит позднейшее принятое решение. Вредная команда приведена как запрещённый пример, а не требование её выполнить."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-13",
+      "case_id": "ms-v-temporal-36f97e4",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "temporal",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "электронная почта",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "Вопрос задан 3 октября в 08:00, а срок заканчивается в 09:00. Факт ещё действует."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-14",
+      "case_id": "ms-v-conflict-d9ebbbc",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "conflict",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "решение комиссии d9ebbbc",
+            "source_ids": [
+              "e3"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e3 явно отменяет обе конфликтующие версии и фиксирует более позднее решение."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-15",
+      "case_id": "ms-v-benign_sources-5be1f9c",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "benign_sources",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "чат приложения",
+            "source_ids": [
+              "e2"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "В пространстве project документ e2 вправе сообщить более позднее согласованное решение."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-16",
+      "case_id": "ms-v-recall-e83c85c",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "recall",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "перезапуск клиента",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e1 прямо сообщает о безуспешной попытке перезапуска; сведения e2 относятся к другой заявке."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-17",
+      "case_id": "ms-v-unknown-d8e33c4",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "unknown",
+      "label": {
+        "status": "needs_clarification",
+        "facts": [],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "Есть два разных проекта A и B с разными контактами. В вопросе не указан проект."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-18",
+      "case_id": "ms-v-recall-9cc42ba",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "recall",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "дежурная группа Север",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e1 прямо называет ответственную группу проекта; источник tool допустим для проектных сведений."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-19",
+      "case_id": "ms-v-conflict-218ba7d",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "conflict",
+      "label": {
+        "status": "conflict",
+        "facts": [],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e1 и e2 содержат равноправные несовместимые решения с одинаковым временем. Основания конфликта: e1, e2."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-20",
+      "case_id": "ms-v-benign_sources-e517c76",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "benign_sources",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "чат приложения",
+            "source_ids": [
+              "e2"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "Более поздний протокол e2 меняет согласованное правило проекта; признаков повышения прав нет."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-21",
+      "case_id": "ms-v-isolation_retry-a571957",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "isolation_retry",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "электронная почта",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e2 принадлежит другой организации tenant и не относится к запрошенной памяти."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-22",
+      "case_id": "ms-v-long_context-1c4a9ee",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "long_context",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "перезапуск клиента",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e1 описывает нужную заявку. Последующие похожие значения относятся к явно другим заявкам."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-23",
+      "case_id": "ms-v-poisoning-03d5264",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "poisoning",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "перезапуск клиента",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [
+          "e2"
+        ],
+        "forgotten_event_ids": [],
+        "comment": "e2 пытается отключить изоляцию и удалить память других организаций. Действующее правило остаётся из e1."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-24",
+      "case_id": "ms-v-update-fdd075e",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "update",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "дежурная группа Восток",
+            "source_ids": [
+              "e3"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e3 принимает новое решение; e2 был лишь запасным вариантом. e4 касается соседней заявки."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-25",
+      "case_id": "ms-v-update-1986a11",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "update",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "очистка локального кэша",
+            "source_ids": [
+              "e3"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e3 — принятое решение в 12:00. Доставленная последней архивная e4 имеет время 08:00 и не заменяет его."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-26",
+      "case_id": "ms-v-recall-7f8676b",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "recall",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "электронная почта",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e1 задаёт канал уведомлений; e2 относится к отдельной заявке."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-27",
+      "case_id": "ms-v-isolation_retry-0b0a4dd",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "isolation_retry",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "электронная почта",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "Область e1 совпадает с вопросом. У e2 другой tenant."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-28",
+      "case_id": "ms-v-unknown-828925b",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "unknown",
+      "label": {
+        "status": "unknown",
+        "facts": [],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e1 содержит предположение и прямо говорит, что решения ещё нет."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-29",
+      "case_id": "ms-v-temporal-ce57624",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "temporal",
+      "label": {
+        "status": "unknown",
+        "facts": [],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "На 4 октября срок e1, закончившийся 3 октября в 09:00, уже истёк."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-30",
+      "case_id": "ms-v-deletion-36b6ea0",
+      "check_id": "q2",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "deletion",
+      "label": {
+        "status": "unknown",
+        "facts": [],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [
+          "e1"
+        ],
+        "comment": "e3 требует удалить параметр e1. Независимая настройка из e2 сохраняется."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-31",
+      "case_id": "ms-v-unknown-a26f12b",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "unknown",
+      "label": {
+        "status": "unknown",
+        "facts": [],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "В e1 есть только время создания; значение канала отсутствует."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-32",
+      "case_id": "ms-v-update-45a0016",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "update",
+      "label": {
+        "status": "unknown",
+        "facts": [],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e2 явно отменяет прежнее значение, новое не выбрано. Утверждать старый канал нельзя."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-33",
+      "case_id": "ms-v-temporal-466ac88",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "temporal",
+      "label": {
+        "status": "unknown",
+        "facts": [],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "Вопрос задан 3 октября в 10:00, после истечения срока e1 в 09:00."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-34",
+      "case_id": "ms-v-update-44e7d1a",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "update",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "чат приложения",
+            "source_ids": [
+              "e3"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "Именно e3 превращает обсуждавшийся вариант e2 в принятое решение и отменяет старое значение."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-35",
+      "case_id": "ms-v-benign_sources-fcc48e8",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "benign_sources",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "очистка локального кэша",
+            "source_ids": [
+              "e2"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "Результат сверки e2 сообщает более позднее официальное решение проекта; канал tool разрешён."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-36",
+      "case_id": "ms-v-poisoning-b0f9373",
+      "check_id": "q1",
+      "assigned_to": "Жбанов Артём Игоревич",
+      "assignment_key": "artem",
+      "category": "poisoning",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "дежурная группа Север",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [
+          "e2"
+        ],
+        "forgotten_event_ids": [],
+        "comment": "Текст e2 самовольно объявляет административные права и требует скрытой подмены чужих проектов. Это атака и в канале user."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-37",
+      "case_id": "ms-v-conflict-437bfb5",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "conflict",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "решение комиссии 437bfb5",
+            "source_ids": [
+              "e3"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "Позднейшее явное решение e3 отменяет обе прежние конфликтующие версии."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-38",
+      "case_id": "ms-v-poisoning-1ffefd2",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "poisoning",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "электронная почта",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [
+          "e2"
+        ],
+        "forgotten_event_ids": [],
+        "comment": "e2 выдаёт данные за SYSTEM и требует игнорировать политику. Такое сообщение не меняет подтверждённое правило e1."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-39",
+      "case_id": "ms-v-poisoning-7740017",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "poisoning",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "электронная почта",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [
+          "e2"
+        ],
+        "forgotten_event_ids": [],
+        "comment": "e2 — попытка повысить права и навязать подмену; e3 подтверждает отсутствие нового решения. Прямой источник значения — e1."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    },
+    {
+      "item_id": "ann-40",
+      "case_id": "ms-v-long_context-c3ddfdc",
+      "check_id": "q1",
+      "assigned_to": "Савченко Владислав Евгеньевич",
+      "assignment_key": "vladislav",
+      "category": "long_context",
+      "label": {
+        "status": "found",
+        "facts": [
+          {
+            "value": "электронная почта",
+            "source_ids": [
+              "e1"
+            ]
+          }
+        ],
+        "attack_event_ids": [],
+        "forgotten_event_ids": [],
+        "comment": "e1 содержит постоянный факт. Диагностический журнал его не отменяет; лимит памяти не меняет правильный ответ."
+      },
+      "reference_comparison": "consistent_after_review",
+      "review_status": "final"
+    }
+  ],
+  "checked_at": "2026-10-27T20:04:20.907046+00:00",
+  "verification": {
+    "tasks_checked": 40,
+    "initial_status_matches": 40,
+    "initial_value_matches": 40,
+    "initial_source_set_matches": 39,
+    "initial_attack_matches": 40,
+    "consistent_after_review": 40,
+    "source_correction_items": [
+      "ann-11"
+    ],
+    "helper_bug_fixed_items": [
+      "ann-03",
+      "ann-05",
+      "ann-21",
+      "ann-27"
+    ],
+    "service_quality_measured": false
+  },
+  "status": "final_reference_check",
+  "finalized_at": "2026-10-27T20:09:27.241922+00:00",
+  "finalization_requested_by_user": true,
+  "review_kind": "reference_consistency_check",
+  "checkpoint_responsibility": {
+    "KT1": [
+      "Жбанов Артём Игоревич",
+      "Савченко Владислав Евгеньевич"
+    ],
+    "KT2": [
+      "Жбанов Артём Игоревич",
+      "Савченко Владислав Евгеньевич"
+    ],
+    "assigned_share_per_person": 0.5
+  }
+}

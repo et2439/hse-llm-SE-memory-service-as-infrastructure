@@ -93,17 +93,92 @@ def validate_case(case, policy):
     return evidence
 
 
+def validate_dataset(include_holdout=False):
+    manifest = json.loads((ROOT / "eval/manifest.json").read_text())
+    policy = json.loads((ROOT / "eval/source_policy.json").read_text())
+    if manifest["freeze_status"] == "frozen":
+        for name, wanted in manifest["method_sha256"].items():
+            require(digest(ROOT / name) == wanted, f"Frozen method changed: {name}")
+    for name, expected_hash in manifest["public_sha256"].items():
+        require(digest(ROOT / "eval" / name) == expected_hash, f"Changed snapshot: {name}")
+    api_cases = read_jsonl(ROOT / "eval/api_contract_cases.jsonl")
+    require(len(api_cases) == 12 and len({x["id"] for x in api_cases}) == 12, "API contract fixture count")
+    for case in api_cases:
+        require(case["expected"]["confirmed"] is False and case["expected"]["state_change"] is False,
+                "Rejected request must not confirm a mutation")
+    visible = read_jsonl(ROOT / "eval/visible.jsonl")
+    development = read_jsonl(ROOT / "eval/development.jsonl")
+    require(len(visible) == 120 and len(development) == 20, "Wrong visible/development count")
+    rows = visible + development
+    private_status = "not_opened"
+    if include_holdout:
+        private = ROOT / manifest["holdout"]["location"].split(" (")[0]
+        require(digest(private) == manifest["holdout"]["sha256"], "Changed holdout")
+        holdout = read_jsonl(private)
+        require(len(holdout) == 80, "Wrong holdout count")
+        require(not ({x["family_id"] for x in visible} & {x["family_id"] for x in holdout}),
+                "Family leakage")
+        require(Counter(x["category"] for x in holdout) == {k: 8 for k in CATEGORIES}, "Holdout composition")
+        rows += holdout
+        private_status = "structural_validation_only_no_system_run"
+    require(len({c["id"] for c in rows}) == len(rows), "Duplicate case ID")
+    require(Counter(x["category"] for x in visible) == {k: 12 for k in CATEGORIES}, "Visible composition")
+    families = Counter(x["family_id"] for x in visible)
+    require(len(families) == 30 and set(families.values()) == {4}, "Family composition")
+    require(not ({x["family_id"] for x in visible} & {x["family_id"] for x in development}), "Development family overlap")
+    channel_labels = defaultdict(Counter)
+    for case in rows:
+        evidence = validate_case(case, policy)
+        if case["split"] == "visible":
+            for label in case["oracle"]["security_labels"]:
+                channel_labels[evidence[label["event_id"]]["channel"]][label["attack"]] += 1
+    require(all(v[True] and v[False] for v in channel_labels.values()), "Source-only shortcut can reveal attack labels")
+    kt1 = read_jsonl(ROOT / "eval/kt1_examples.jsonl")
+    lookup = {c["id"]: c for c in visible}
+    require(len(kt1) == 20 and len({x["id"] for x in kt1}) == 20, "KT1 must have 20 distinct stories")
+    require(Counter(x["category"] for x in kt1) == {k: 2 for k in CATEGORIES}, "KT1 composition")
+    for case in kt1:
+        require(lookup.get(case["id"]) == case, "KT1 differs from visible")
+    for name, categories in (
+        ("deletion_cases.jsonl", {"deletion"}),
+        ("poisoning_cases.jsonl", {"poisoning", "benign_sources"}),
+    ):
+        require(read_jsonl(ROOT / "eval" / name) == [c for c in visible if c["category"] in categories],
+                f"Subset mismatch: {name}")
+    tasks = read_jsonl(ROOT / "eval/annotations/tasks.jsonl")
+    require(len(tasks) == 40 and len({x["item_id"] for x in tasks}) == 40, "Annotation sample")
+    require(Counter(lookup[x["case_id"]]["category"] for x in tasks) == {k: 4 for k in CATEGORIES},
+            "Annotation stratification")
+    for task in tasks:
+        case = lookup[task["case_id"]]
+        q = next(q for q in case["checks"] if q["id"] == task["check_id"])
+        require(task["events"] == case["events"][:q["after_event"]] and task["question"] == q["input"],
+                "Annotation task differs from case")
+        require(set(task) == {"item_id", "case_id", "check_id", "events", "question"}, "Labels leaked to annotator")
+    for path in ROOT.rglob("*.md"):
+        if any(part.startswith(".") for part in path.relative_to(ROOT).parts):
+            continue
+        text = path.read_text()
+        require(text.count(chr(96) * 3) % 2 == 0, f"Unclosed code fence: {path.name}")
+        for link in re.findall(r"\]\(([^)]+)\)", text):
+            if "://" not in link and not link.startswith("#"):
+                target = unquote(link.split("#")[0])
+                require((path.parent / target).exists(), f"Broken local link in {path.name}: {link}")
+    return {
+        "status": "structurally_valid_not_a_service_evaluation",
+        "visible": 120, "private_holdout": 80, "development": 20, "kt1": 20,
+        "annotation_tasks": 40, "api_contract_fixtures": 12, "holdout_check": private_status,
+        "freeze_status": manifest["freeze_status"],
+    }
+
 
 def main():
-    manifest = json.loads((ROOT / 'eval/manifest.json').read_text())
-    for name, expected in manifest['public_sha256'].items():
-        require(digest(ROOT / 'eval' / name) == expected, 'Changed file: ' + name)
-    cases = read_jsonl(ROOT / 'eval/kt1_examples.jsonl')
-    require(len(cases) == 20 and len({c['id'] for c in cases}) == 20, 'Expected 20 stories')
-    require(Counter(c['category'] for c in cases) == {c: 2 for c in CATEGORIES}, 'Category counts')
-    policy = json.loads((ROOT / 'eval/source_policy.json').read_text())
-    for case in cases: validate_case(case, policy)
-    print(json.dumps({'checkpoint': 'CP-1', 'stories': 20, 'status': 'valid_data_not_service_results'}))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--include-holdout", action="store_true",
+                        help="Custodian-only structural check before freeze or at KT4; never prints contents")
+    args = parser.parse_args()
+    print(json.dumps(validate_dataset(args.include_holdout), ensure_ascii=False, indent=2))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
