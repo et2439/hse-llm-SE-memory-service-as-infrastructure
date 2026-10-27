@@ -1,6 +1,6 @@
 {
-  "dataset_version": "1.0.3",
-  "prepared_at": "2026-10-25",
+  "dataset_version": "1.0.5",
+  "prepared_at": "2026-10-27",
   "freeze_status": "frozen",
   "counts": {
     "scored": 200,
@@ -66,24 +66,20 @@
     "poisoning_cases.jsonl": "e89ac7884d87f4d55383fbdcbccde043319e7167264c7febda07250976948418",
     "source_policy.json": "df772e69a3f34cde9320632003fd73c9991ea4be28258477e895d3062d470ff3",
     "annotations/tasks.jsonl": "a96fc6ade0b87aa603704c6b941a34c3f49534e6551a25b64fd4cf49cbc080ad",
-    "annotations/tasks.md": "389b995dbf13643f42fdd943f43a838fd692cc5f6e330d37df5adcc792121171",
-    "api_contract_cases.jsonl": "208e94e397d00461c541b66995a7767d29301fcff2c0155460dccd4944457498",
+    "annotations/tasks.md": "f8ccc5e00883db2b9e915c793eddfc49bfe56ece0e08d6d9cc7e2d8dc1a52027",
+    "api_contract_cases.jsonl": "1c57397e45778e3d61d3f7a9bde90bf3476632a5e159f655ef15b52c39b3767e",
     "budget_inputs.json": "d4e4b3fce3e7954da17bbae4e1adf66eb8c404f10775b6a2d8235491240bcc76",
-    "protocol.json": "241dc755476707d2b8bb1e3cf1f1ec630ebfa331f33d74c214f10f111bd7d7ef",
+    "protocol.json": "323fab7bcff3c23ff7b8a779a088ab10cf01f324bdbbb127af2632ef12dce435",
     "answer_instructions.txt": "c6e51adb3199651b11358b2c66e0dda9ec435cbc52962be8888ff8b4ded0fdb0",
-    "release.json": "922951018734d329f38a8dc8109d549b8fba05626c80f7580732338aa69391aa",
-    "annotations/reference_check/vladislav.md": "ff637ffcd12fa2f63d7d1a5ca069f3e35fe749d2c1b0f15e3381b7ecb0d52d4c",
-    "annotations/reference_check/review.json": "c8414545530ba5e94437b009e821a3f9152bfe36170618ea3960b663436ceea7",
-    "annotations/reference_check/artem.md": "1941d8b81dea02cc5553345e2e5e1d758a5085ddd805efcee9cbafc8c1bef659",
-    "annotations/reference_check/README.md": "b2a0029a4ae3879d7fac6312edfbce963c688d29d4a8ab9b5226968e3b9788a6"
+    "release.json": "bf601b7dda24a51671a2855e23df83d8e99be5469e043b0207bd36d6a7dff67c",
+    "annotations/reference_check/review.json": "44dd0ec290e73c138e01c90abba0f218506dd743fd70c2f3a142eee466ac446a",
+    "annotations/reference_check/README.md": "415e5f3a166a609e1705f43cfb96cbbf1c51a61bfd7321f25a1ff05b612f325f"
   },
   "holdout": {
     "sha256": "9e1c3fbfcab699f105adef8b663ea5823ea7ecdc92ec8b750402d7c8211baa2e",
     "rows": 80,
-    "custodian": "Жбанов Артём Игоревич; Савченко Владислав Евгеньевич (совместная ответственность, без просмотра содержимого)",
-    "release": "KT4",
+    "release": "final_evaluation",
     "location": ".eval_private/holdout.jsonl (not tracked)",
-    "local_package_prepared": true,
     "local_package_sha256": "c2c0c4e9908eaffabfbdb1d24a4cb05f875323b96c17fedb2e67e783fd54fd4f",
     "external_delivery_confirmed": false
   },
@@ -100,28 +96,6 @@
     "rare-error guarantees cannot be established from this sample"
   ],
   "updated_at": "2026-10-27",
-  "revisions": [
-    {
-      "date": "2026-10-25",
-      "change": "Сконструированы синтетические истории и эталоны до реализации сервиса."
-    },
-    {
-      "date": "2026-10-27",
-      "change": "Исправлены формулировки открытых историй и подсказка целей забывания; данные и методика версии 1.0.0 зафиксированы."
-    },
-    {
-      "date": "2026-10-27",
-      "change": "Редакционная версия 1.0.1: унифицированы оформление и названия проверки. Истории, ответы и ограничения методики не изменены."
-    },
-    {
-      "date": "2026-10-27",
-      "change": "Редакционная версия 1.0.2: совместная равная ответственность Артёма и Владислава за КТ1 и КТ2; распределение аудита 20/20. Фактическое происхождение эталонов и результаты проверок не изменены."
-    },
-    {
-      "date": "2026-10-27",
-      "change": "Версия 1.0.3: нейтральное описание проверки и служебных метаданных. Тексты событий, вопросы и ожидаемые ответы сохранены."
-    }
-  ],
   "ground_truth": {
     "method": "synthetic_by_construction",
     "labeling_stage": "before_memory_service_implementation",
@@ -136,47 +110,28 @@
       "Synthetic examples and correlated variants do not establish production or rare-error guarantees."
     ]
   },
-  "previous_candidate_version": "1.0.3-rc1",
-  "publication_status": "local_pr_ready",
-  "supersedes_version": "1.0.2",
-  "previous_release_sha256": "99d825e7c8bc3b810d57f7e9db75a7e8eca6e8d33d3239c44ac68e221524aeb4",
+  "supersedes_version": "1.0.4",
   "reference_check": {
     "path": "annotations/reference_check/README.md",
     "tasks": 40,
-    "assigned_to_artem": 20,
-    "assigned_to_vladislav": 20,
-    "per_category_per_assignee": 2,
-    "status": "final_reference_check",
-    "finalized_at": "2026-10-27T20:09:27.241922+00:00"
+    "status": "final_reference_check"
   },
-  "checkpoint_responsibility": {
-    "KT1": [
-      "Жбанов Артём Игоревич",
-      "Савченко Владислав Евгеньевич"
-    ],
-    "KT2": [
-      "Жбанов Артём Игоревич",
-      "Савченко Владислав Евгеньевич"
-    ],
-    "assigned_share_per_person": 0.5
-  },
-  "frozen_at": "2026-10-27T20:53:22.796859+00:00",
   "method_sha256": {
     "eval/common.py": "eedcd0e9b0ca39de56aa80e0bc320457ddf5f838f88e737a70bdf4045eb67acf",
-    "eval/validate.py": "130167b430dd250b02494198c8bff87540b0a8b24a96145e75a166d7722e03d8",
+    "eval/validate.py": "af8c9268f36cf5b88662c6caeb67dd7addcf3de42d21031e01d72ef43010e1f3",
+    "eval/reference_check.py": "b00ce5bc34af6909d2569a1dc5704e04b6d7171988c57ed201895e5365782504",
     "eval/export_inputs.py": "6689d950649a42e4c085a7954c9e1ed30f8b24076347eb90be8ed2e38f517a0a",
-    "eval/agreement.py": "2c81a05842ffb99a22b89feda62bbdf27a8471f81f9a7ec46b3a21ccc74c46cc",
-    "eval/annotation_store.py": "46eb4ffb31c983ad912e9b63b13b5aa7e4d3e374f42aa28d68173ae2d5be9d2c",
-    "eval/review.py": "3c55f2dc87fa9121c5d8d6cafa356fb20a5cd12b56eb56c2af8ac64e2ff4e1a5",
-    "eval/freeze.py": "5791a7302399628dc8ded09ca9275095f1a0393cc2d35a8cf0817be0b1b83d6f",
-    "eval/protocol.json": "241dc755476707d2b8bb1e3cf1f1ec630ebfa331f33d74c214f10f111bd7d7ef",
+    "eval/budget.py": "38516b2a98db446460e6c416589ef39c83b60b57d481a64c031b87a6c6d74f7f",
+    "eval/protocol.json": "323fab7bcff3c23ff7b8a779a088ab10cf01f324bdbbb127af2632ef12dce435",
     "eval/answer_instructions.txt": "c6e51adb3199651b11358b2c66e0dda9ec435cbc52962be8888ff8b4ded0fdb0",
-    "docs/kt2.md": "81a228af4bcedbc673bd719f259ac6f3234cb16c16a7a0e7f6078f4a9c22f951",
-    "docs/annotation_guide.md": "f888fa96c5ac353ce34549a55bf2708fa2d00546983956492d502b84cdbe72c4",
-    "design_doc.md": "94ab921f95c4f5ef6f6646f14b6089a3066a0a410acf1a1dfa60186534bc739e",
-    "README.md": "3612d4812d4a52058269125761cf8eaa31f8aa43e7b62c95eed6eacb58ba0441",
-    "docs/local_workflow.md": "eca9212135fd882babf0f06395e512778b2bffff6c54f2c976ed62a80018c55a",
-    "docs/submission_checklist.md": "4b751a01e0c0fdfb5e4b3c2aa3078f85d82eb619e29383a31b061698151ce255",
-    "eval/README.md": "72b365e306c6a139b855040f3d913a70e477b704800f7c4b6daf33d7641bfe2c"
-  }
+    "README.md": "a3048662b39c4123b5102746fd05b83b7b46852ab8f44664535cc4a172cf4b26",
+    "design_doc.md": "611ebde514f2a835c528d0c50b05b00b990063f57d5fe4c068d227426bd09726",
+    "docs/kt1.md": "2a3fc2b8443111ef518f3a32d91ad920aab8452d5290e1298a9c2a8146c6f45b",
+    "docs/kt2.md": "200779862e97e681c256606cc0fc02081b6d12aea1f4e9b017fa36e812fe0b90",
+    "docs/sources.md": "9433423d09795bc27721bf2f397441f832a5b8b328ca164f1d1634d11a524180",
+    "eval/README.md": "1180d4a38d54028d3919b75b69a60b574052be055a34b508905c1681234970e9",
+    "tests/test_evaluation_material.py": "6143c851fcf93940d37394697c7e122ba6c7b84ee67239afaa915cd17a707e03",
+    "tests/test_reference_check.py": "31d5d1e6f232172ff8e160a6fdb09bf7d9bc4210e981b6f4a7ef3f6085f6188c"
+  },
+  "frozen_on": "2026-10-27"
 }

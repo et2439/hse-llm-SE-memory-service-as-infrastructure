@@ -1,4 +1,4 @@
-"""Validate dataset construction and custody; does not run a memory system."""
+"""Validate the fixed evaluation set and references without running a memory system."""
 from __future__ import annotations
 
 import argparse
@@ -9,6 +9,7 @@ import re
 from urllib.parse import unquote
 
 from eval.common import CATEGORIES, ROOT, STATUSES, digest, read_jsonl, system_input
+from eval.reference_check import validate_reference_check
 
 
 def require(condition, message):
@@ -155,9 +156,16 @@ def validate_dataset(include_holdout=False):
         require(task["events"] == case["events"][:q["after_event"]] and task["question"] == q["input"],
                 "Annotation task differs from case")
         require(set(task) == {"item_id", "case_id", "check_id", "events", "question"}, "Labels leaked to annotator")
-    for path in ROOT.rglob("*.md"):
-        if any(part.startswith(".") for part in path.relative_to(ROOT).parts):
-            continue
+    review = json.loads((ROOT / "eval/annotations/reference_check/review.json").read_text())
+    checked = validate_reference_check(tasks, visible, review,
+                                       tasks_sha256=digest(ROOT / "eval/annotations/tasks.jsonl"))
+    documents = [ROOT / "README.md", ROOT / "design_doc.md", ROOT / "eval/README.md"]
+    documents += sorted((ROOT / "docs").rglob("*.md"))
+    documents += sorted(path for path in (ROOT / "eval").rglob("*.md")
+                        if path != ROOT / "eval/README.md"
+                        and not any(part in {"filled", "runs"} or part.startswith(".")
+                                    for part in path.relative_to(ROOT / "eval").parts))
+    for path in documents:
         text = path.read_text()
         require(text.count(chr(96) * 3) % 2 == 0, f"Unclosed code fence: {path.name}")
         for link in re.findall(r"\]\(([^)]+)\)", text):
@@ -168,14 +176,14 @@ def validate_dataset(include_holdout=False):
         "status": "structurally_valid_not_a_service_evaluation",
         "visible": 120, "private_holdout": 80, "development": 20, "kt1": 20,
         "annotation_tasks": 40, "api_contract_fixtures": 12, "holdout_check": private_status,
-        "freeze_status": manifest["freeze_status"],
+        "reference_checks": checked, "freeze_status": manifest["freeze_status"],
     }
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--include-holdout", action="store_true",
-                        help="Custodian-only structural check before freeze or at KT4; never prints contents")
+                        help="Final structural check of the separate holdout; never prints contents")
     args = parser.parse_args()
     print(json.dumps(validate_dataset(args.include_holdout), ensure_ascii=False, indent=2))
 

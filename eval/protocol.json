@@ -1,5 +1,5 @@
 {
-  "version": "2.3-constructed",
+  "version": "2.5",
   "status": "frozen",
   "prepared_at": "2026-10-27",
   "dataset_manifest": "eval/manifest.json",
@@ -12,11 +12,10 @@
   "baseline": {
     "algorithm": "authorized-whole-event-suffix-v1",
     "scope_filter": "common_to_all_comparators",
-    "status": "described_implementation_and_measurement_at_KT3"
+    "status": "described"
   },
   "tokenizer": {
     "encoding": "cl100k_base",
-    "implementation_stage": "KT3",
     "counted_text": "complete_serialized_memory_with_sources_and_markers"
   },
   "answer_agent": {
@@ -27,7 +26,7 @@
     "availability_checked": false,
     "api_calls_made": 0,
     "instructions": "eval/answer_instructions.txt",
-    "note": "До КТ3 проверить доступ и закрепить фактическую версию. Одинаковая конфигурация для B0/B1/B2."
+    "note": "Одинаковая конфигурация для B0/B1/B2; доступность и фактическая версия проверяются перед оцениванием."
   },
   "comparators": [
     {
@@ -41,18 +40,13 @@
     },
     {
       "id": "B2",
-      "status": "service_planned_for_KT3"
+      "status": "specified_by_contract"
     }
   ],
   "annotation": {
     "sample_size": 40,
     "schema_version": 2,
     "kind": "reference_check",
-    "task_assignees": [
-      "Жбанов Артём Игоревич",
-      "Савченко Владислав Евгеньевич"
-    ],
-    "assignments_per_person": 20,
     "status": "complete",
     "primary_checks_only": true
   },
@@ -65,11 +59,11 @@
   ],
   "heldout": {
     "rows": 80,
-    "open_at": "KT4",
+    "open_at": "final_evaluation",
     "ordinary_commands_open_contents": false
   },
   "scope": "KT1_KT2_method_only",
-  "dataset_version": "1.0.3",
+  "dataset_version": "1.0.5",
   "ground_truth": {
     "method": "synthetic_by_construction",
     "labeling_stage": "before_memory_service_implementation",
@@ -84,16 +78,5 @@
       "Synthetic examples and correlated variants do not establish production or rare-error guarantees."
     ]
   },
-  "checkpoint_responsibility": {
-    "KT1": [
-      "Жбанов Артём Игоревич",
-      "Савченко Владислав Евгеньевич"
-    ],
-    "KT2": [
-      "Жбанов Артём Игоревич",
-      "Савченко Владислав Евгеньевич"
-    ],
-    "assigned_share_per_person": 0.5
-  },
-  "frozen_at": "2026-10-27T20:53:22.796859+00:00"
+  "frozen_on": "2026-10-27"
 }

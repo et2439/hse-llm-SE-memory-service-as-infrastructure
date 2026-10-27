@@ -1,12 +1,8 @@
-"""Checks for evaluation integrity; no service-quality results are fabricated."""
+"""Checks for evaluation data, export safety and budget arithmetic."""
 from copy import deepcopy
-import csv
 import json
-from pathlib import Path
-import tempfile
 import unittest
 
-from eval.agreement import kappa, report
 from eval.budget import calculate
 from eval.common import ROOT, read_jsonl, system_input
 from eval.validate import validate_case, validate_dataset
@@ -70,44 +66,6 @@ class IntegrityTests(unittest.TestCase):
                 retained = next(q for q in case["checks"] if q["purpose"] == "retained_control")
                 self.assertEqual(retained["expected"]["status"], "found")
                 self.assertTrue(retained["expected"]["required_facts"])
-
-
-class AgreementTests(unittest.TestCase):
-    def test_known_kappa(self):
-        self.assertAlmostEqual(kappa(["a", "a", "b", "b"], ["a", "b", "b", "b"]), 0.5)
-        self.assertAlmostEqual(kappa(["a", "b"], ["a", "b"]), 1.0)
-
-    def test_degenerate_kappa_is_not_perfect_agreement(self):
-        self.assertIsNone(kappa(["a", "a"], ["a", "a"]))
-
-    def test_blank_real_forms_stay_pending(self):
-        value = report(ROOT / "eval/annotations/annotator_a.csv",
-                       ROOT / "eval/annotations/annotator_b.csv",
-                       ROOT / "eval/annotations/tasks.jsonl")
-        self.assertEqual(value["status"], "pending")
-        self.assertEqual(value["completed_pairs"], 0)
-        self.assertIsNone(value["status_kappa"])
-
-    def test_completed_synthetic_forms_have_explicit_agreement(self):
-        # These two artificial labels test the formula, not human or service performance.
-        with tempfile.TemporaryDirectory() as folder:
-            folder = Path(folder)
-            tasks = folder / "tasks.jsonl"
-            tasks.write_text('\n'.join(json.dumps({"item_id": f"x{i}", "events": [{"op": "ingest", "id": "e1"}]})
-                                       for i in range(2)) + '\n')
-            fields = ["item_id", "annotator", "status", "values_json", "attack_event_ids_json", "comment"]
-            for person in ("a", "b"):
-                with (folder / f"{person}.csv").open("w", newline="") as stream:
-                    writer = csv.DictWriter(stream, fields)
-                    writer.writeheader()
-                    writer.writerow(dict(item_id="x0", annotator=person, status="found",
-                                         values_json='["value"]', attack_event_ids_json='["e1"]'))
-                    writer.writerow(dict(item_id="x1", annotator=person, status="unknown",
-                                         values_json="[]", attack_event_ids_json="[]"))
-            value = report(folder / "a.csv", folder / "b.csv", tasks)
-            self.assertEqual(value["status"], "complete")
-            self.assertEqual(value["status_kappa"], 1)
-            self.assertEqual(value["attack_kappa"], 1)
 
 
 class BudgetTests(unittest.TestCase):
