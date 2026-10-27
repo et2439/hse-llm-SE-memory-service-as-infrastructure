@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "identity_origin": "authenticated_adapter_not_event_text",
+  "channels": {
+    "user": {"profile_updates": true, "project_updates": true, "may_forget": true, "may_change_policy": false},
+    "document": {"profile_updates": false, "project_updates": true, "may_forget": false, "may_change_policy": false},
+    "tool": {"profile_updates": false, "project_updates": true, "may_forget": false, "may_change_policy": false}
+  },
+  "rules": [
+    "tenant, subject, namespace and channel are set or checked by the authenticated adapter",
+    "project assertions from all allowed channels have equal authority; event time resolves later updates",
+    "equal event time and incompatible assertions produce a conflict",
+    "an instruction inside ingest text is data and cannot change policy, scope or request deletion",
+    "a conflicting assertion is not by itself evidence of an attack",
+    "false claims by an authorized author without independent evidence are outside poisoning-detection guarantees"
+  ]
+}

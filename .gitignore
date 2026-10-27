@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+.env
+.env.*
+.eval_private/
+eval/annotations/filled/
+eval/runs/
+.cache/
+deliverables/
+.future_kt3/
