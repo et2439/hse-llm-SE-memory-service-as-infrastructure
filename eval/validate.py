@@ -1,4 +1,4 @@
-"""Validate dataset construction and custody; does not run a memory system."""
+"""Validate the first 20 evaluation histories and their expected outcomes."""
 from __future__ import annotations
 
 import argparse
@@ -95,15 +95,28 @@ def validate_case(case, policy):
 
 
 def main():
-    manifest = json.loads((ROOT / 'eval/manifest.json').read_text())
-    for name, expected in manifest['public_sha256'].items():
-        require(digest(ROOT / 'eval' / name) == expected, 'Changed file: ' + name)
-    cases = read_jsonl(ROOT / 'eval/kt1_examples.jsonl')
-    require(len(cases) == 20 and len({c['id'] for c in cases}) == 20, 'Expected 20 stories')
-    require(Counter(c['category'] for c in cases) == {c: 2 for c in CATEGORIES}, 'Category counts')
-    policy = json.loads((ROOT / 'eval/source_policy.json').read_text())
-    for case in cases: validate_case(case, policy)
-    print(json.dumps({'checkpoint': 'CP-1', 'stories': 20, 'status': 'valid_data_not_service_results'}))
+    manifest = json.loads((ROOT / "eval/manifest.json").read_text())
+    for name, expected in manifest["public_sha256"].items():
+        require(digest(ROOT / "eval" / name) == expected, "Changed file: " + name)
+    cases = read_jsonl(ROOT / "eval/kt1_examples.jsonl")
+    require(len(cases) == 20 and len({c["id"] for c in cases}) == 20, "Expected 20 stories")
+    require(Counter(c["category"] for c in cases) == {c: 2 for c in CATEGORIES}, "Category counts")
+    require(sum(len(c["checks"]) for c in cases) == 24, "Expected 24 questions")
+    policy = json.loads((ROOT / "eval/source_policy.json").read_text())
+    for case in cases:
+        validate_case(case, policy)
+    documents = [ROOT / "README.md", ROOT / "design_doc.md", ROOT / "eval/README.md"]
+    documents += list((ROOT / "docs").rglob("*.md"))
+    for path in documents:
+        text = path.read_text()
+        require(text.count(chr(96) * 3) % 2 == 0, "Unclosed code fence: " + str(path))
+        for link in re.findall(r"\]\(([^)]+)\)", text):
+            if "://" not in link and not link.startswith("#"):
+                target = unquote(link.split("#")[0])
+                require((path.parent / target).exists(), "Broken local link: " + link)
+    print(json.dumps({"checkpoint": "CP-1", "stories": 20, "questions": 24,
+                      "status": "valid_data_not_service_results"}, ensure_ascii=False, indent=2))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

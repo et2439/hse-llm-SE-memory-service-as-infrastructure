@@ -2,6 +2,7 @@
   "checkpoint": "CP-1",
   "dataset_version": "kt1-20-v1",
   "stories": 20,
+  "questions": 24,
   "public_sha256": {
     "kt1_examples.jsonl": "acbe9c91e6ead02e815228dfc04ded47103463515bd88fe512a210668781cdb9",
     "source_policy.json": "df772e69a3f34cde9320632003fd73c9991ea4be28258477e895d3062d470ff3",
