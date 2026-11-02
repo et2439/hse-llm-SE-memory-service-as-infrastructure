@@ -2,10 +2,11 @@
 
 | Источник | Как используется |
 |---|---|
-| [Требования проекта курса](https://github.com/xufana/llm-system-engineering/blob/main/project.md) | Клиент, контракт, численные бюджеты, архитектурный набросок и первые примеры |
+| [Требования проекта курса](https://github.com/xufana/llm-system-engineering/blob/main/project.md) | Состав КТ1–КТ2, контракт, методика оценивания и разделение набора |
 | [Тема 15](https://github.com/xufana/llm-system-engineering/blob/main/topics.md) | Инфраструктура памяти, удаление, отравление, контекст и baseline |
 | [Исходный шаблон](https://github.com/xufana/llm-system-engineering/blob/main/templates/design_doc_template.md) | Форма контракта, бюджетов, eval и решений |
 | [Ревью другой команды](https://github.com/CHA-llm-memory-team/memory-service/pull/1#issuecomment-6309849383) | Пример требований к ясности документа, удалению по контракту клиента и отрицательным контролям |
+| [Материалы КТ2 другой команды, фиксированная версия](https://github.com/CHA-llm-memory-team/memory-service/tree/dfcd3a72f0e8a8f50a459a1050ec42b5e4158cae) | Пример разделения данных, протокола разметки и разбора ошибок |
 | [GPT-6 Luna](https://developers.openai.com/api/docs/models/gpt-6-luna) | Ценовой сценарий Standard: $0,10/$0,50 за миллион input/output |
 | [text-embedding-3-small](https://developers.openai.com/api/docs/models/text-embedding-3-small) | Ценовой сценарий embeddings: $0,02 за миллион input |
 | [Mem0 OSS REST](https://github.com/mem0ai/mem0/blob/main/docs/open-source/features/rest-api.mdx) | Наличие готовых операций добавления, поиска, обновления и удаления; API OSS отличается от платформы |

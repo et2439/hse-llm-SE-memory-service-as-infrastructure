@@ -1,0 +1,13 @@
+{
+  "status": "frozen",
+  "dataset_version": "1.0.5",
+  "ground_truth_method": "synthetic_by_construction",
+  "checked_questions": 40,
+  "audit_sha256": "44dd0ec290e73c138e01c90abba0f218506dd743fd70c2f3a142eee466ac446a",
+  "holdout_sha256": "9e1c3fbfcab699f105adef8b663ea5823ea7ecdc92ec8b750402d7c8211baa2e",
+  "closed_archive_sha256": "c2c0c4e9908eaffabfbdb1d24a4cb05f875323b96c17fedb2e67e783fd54fd4f",
+  "heldout_contents_parsed": false,
+  "external_delivery_confirmed": false,
+  "service_evaluation_performed": false,
+  "frozen_on": "2026-10-27"
+}

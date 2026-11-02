@@ -5,5 +5,7 @@ __pycache__/
 .env
 .env.*
 .eval_private/
+eval/annotations/filled/
+eval/runs/
 .cache/
 deliverables/

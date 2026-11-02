@@ -1,0 +1,82 @@
+{
+  "version": "2.5",
+  "status": "frozen",
+  "prepared_at": "2026-10-27",
+  "dataset_manifest": "eval/manifest.json",
+  "context_budgets": [
+    128,
+    256,
+    512,
+    2048
+  ],
+  "baseline": {
+    "algorithm": "authorized-whole-event-suffix-v1",
+    "scope_filter": "common_to_all_comparators",
+    "status": "described"
+  },
+  "tokenizer": {
+    "encoding": "cl100k_base",
+    "counted_text": "complete_serialized_memory_with_sources_and_markers"
+  },
+  "answer_agent": {
+    "target_model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "max_output_tokens": 512,
+    "repetitions": 5,
+    "availability_checked": false,
+    "api_calls_made": 0,
+    "instructions": "eval/answer_instructions.txt",
+    "note": "Одинаковая конфигурация для B0/B1/B2; доступность и фактическая версия проверяются перед оцениванием."
+  },
+  "comparators": [
+    {
+      "id": "B0",
+      "status": "described_not_run_in_KT2"
+    },
+    {
+      "id": "B1",
+      "candidate": "mem0 OSS",
+      "installed": false
+    },
+    {
+      "id": "B2",
+      "status": "specified_by_contract"
+    }
+  ],
+  "annotation": {
+    "sample_size": 40,
+    "schema_version": 2,
+    "kind": "reference_check",
+    "status": "complete",
+    "primary_checks_only": true
+  },
+  "release_gates": [
+    "public_dataset_valid",
+    "construction_ground_truth_declared",
+    "final_reference_check_consistent",
+    "closed_package_hash_valid",
+    "method_and_dataset_hashes_frozen"
+  ],
+  "heldout": {
+    "rows": 80,
+    "open_at": "final_evaluation",
+    "ordinary_commands_open_contents": false
+  },
+  "scope": "KT1_KT2_method_only",
+  "dataset_version": "1.0.5",
+  "ground_truth": {
+    "method": "synthetic_by_construction",
+    "labeling_stage": "before_memory_service_implementation",
+    "procedure_document": "docs/kt2.md#3-источники-и-ground-truth",
+    "reference_check": {
+      "sample_size": 40,
+      "status": "complete",
+      "path": "eval/annotations/reference_check/review.json"
+    },
+    "limitations": [
+      "Natural-language templates may be ambiguous.",
+      "Synthetic examples and correlated variants do not establish production or rare-error guarantees."
+    ]
+  },
+  "frozen_on": "2026-10-27"
+}
