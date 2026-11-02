@@ -1,0 +1,33 @@
+{
+  "as_of": "2026-10-25",
+  "currency": "USD",
+  "status": "planning_assumptions_not_measurements",
+  "operations_per_day": 10000,
+  "days_per_month": 30,
+  "write_share": 0.30,
+  "read_share": 0.69,
+  "forget_share": 0.01,
+  "llm_input_per_million": 0.10,
+  "llm_output_per_million": 0.50,
+  "embedding_per_million": 0.02,
+  "price_reference_model": "gpt-6-luna",
+  "embedding_reference_model": "text-embedding-3-small",
+  "write_llm_calls": 2,
+  "write_input_tokens_per_call": 1250,
+  "write_output_tokens_per_call": 180,
+  "forget_input_tokens": 1000,
+  "forget_output_tokens": 80,
+  "write_embedding_tokens": 350,
+  "query_embedding_tokens": 80,
+  "agent_fixed_input_tokens": 530,
+  "agent_memory_tokens": 2048,
+  "agent_output_tokens": 180,
+  "baseline_infrastructure_per_month": 10,
+  "memory_infrastructure_per_month": 40,
+  "reserve_share": 0.30,
+  "memory_service_monthly_cap": 120,
+  "price_sources": [
+    "https://developers.openai.com/api/docs/models/gpt-6-luna",
+    "https://developers.openai.com/api/docs/models/text-embedding-3-small"
+  ]
+}
